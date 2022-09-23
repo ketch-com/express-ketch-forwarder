@@ -12,8 +12,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
     outputs:
       version: ${{ steps.version.outputs.version }}
       version-major: ${{ steps.version.outputs.version-major-only }}
@@ -57,9 +55,7 @@ jobs:
     name: Package ketch-event-forwarder
     needs: build
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-    permissions:
+g    permissions:
       contents: read
       packages: write
     steps:
