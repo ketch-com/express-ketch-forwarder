@@ -1,0 +1,49 @@
+{
+  "name": "ketch-event-forwarder",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Express reference implemntation of Ketch Event Forwarder receiver",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ketch-com/express-ketch-forwarder.git"
+  },
+  "homepage": "https://github.com/ketch-com/express-ketch-forwarder",
+  "bugs": {
+    "url": "https://github.com/ketch-com/express-ketch-forwarder/issues"
+  },
+  "author": "Ketch Kloud, Inc.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --watch src --exec ts-node src/index.ts -- --tls-cert certs/server.crt --tls-key certs/server.key",
+    "build": "ncc build --license licenses.txt -o dist/ketch-event-forwarder src/index.ts",
+    "format": "prettier --write '**/*.ts'",
+    "format-check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest --passWithNoTests",
+    "all": "npm run build && npm run format && npm run lint && npm test"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-basic-auth": "^1.2.1",
+    "ts-node": "^10.9.1",
+    "yargs": "^17.5.1",
+    "zod": "^3.19.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.7.18",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "@vercel/ncc": "^0.34.0",
+    "eslint": "^8.23.1",
+    "eslint-plugin-github": "^4.3.7",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.0.4",
+    "jest": "^29.0.3",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "ts-jest": "^29.0.1",
+    "typescript": "^4.8.3"
+  }
+}

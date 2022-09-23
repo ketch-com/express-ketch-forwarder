@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  ketch-event-forwarder:
+    build:
+      context: .
+      dockerfile: docker/ketch-event-forwarder/Dockerfile
+    command:
+      - "-v"
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+    - ./certs:/tls
+    environment:
+      KETCH_USER_NAME: user1
+      KETCH_USER_PASSWORD: password1
+
+networks:
+  default:
+    name: ketch_event_forwarder_default

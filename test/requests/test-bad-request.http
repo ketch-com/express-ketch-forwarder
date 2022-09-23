@@ -1,0 +1,42 @@
+POST https://localhost:3000/ketch/events
+Content-Type: application/json
+Authorization: Basic user1 password1
+
+{
+  "apiVersion":"dsr/v1",
+  "kind":"DeleteRequest",
+  "metadata": {
+    "uid":"eb5829edxczxczxc",
+    "tenant":"axonic"
+  },
+  "request": {
+    "property": "example.com",
+    "environment": "production",
+    "jurisdiction": "CCPA",
+    "regulation": "CCPA"
+  }
+}
+
+> {%
+client.test("Request returned error status", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+client.test("Response returns JSON", function() {
+  const type = response.contentType.mimeType;
+  client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+});
+client.test("Response returns Ketch format", function() {
+  client.assert(response.body.hasOwnProperty("apiVersion"), "Cannot find 'apiVersion' option in response");
+  client.assert(response.body.apiVersion === 'dsr/v1', "Wrong 'apiVersion'");
+  client.assert(response.body.hasOwnProperty("kind"), "Cannot find 'kind' option in response");
+  client.assert(response.body.kind === 'Error', "Wrong 'kind'");
+  client.assert(response.body.hasOwnProperty("metadata"), "Cannot find 'metadata' option in response");
+  client.assert(response.body.metadata.uid === 'eb5829edxczxczxc', "Wrong 'uid'");
+  client.assert(response.body.metadata.tenant === 'axonic', "Wrong 'tenant'");
+  client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
+  client.assert(response.body.error.code === 400, "Wrong 'error.code'");
+  client.assert(response.body.error.status === 'invalid', "Wrong 'error.status'");
+  client.assert(response.body.error.message === 'request.identities: Required; request.subject: Required', "Wrong 'error.message'");
+});
+%}
+
