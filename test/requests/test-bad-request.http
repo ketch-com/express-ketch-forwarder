@@ -6,7 +6,7 @@ Authorization: Basic user1 password1
   "apiVersion":"dsr/v1",
   "kind":"DeleteRequest",
   "metadata": {
-    "uid":"eb5829edxczxczxc",
+    "uid":"D6EFAECD-2FCB-486D-B49A-4F699BFC24D1",
     "tenant":"axonic"
   },
   "request": {
@@ -31,7 +31,7 @@ client.test("Response returns Ketch format", function() {
   client.assert(response.body.hasOwnProperty("kind"), "Cannot find 'kind' option in response");
   client.assert(response.body.kind === 'Error', "Wrong 'kind'");
   client.assert(response.body.hasOwnProperty("metadata"), "Cannot find 'metadata' option in response");
-  client.assert(response.body.metadata.uid === 'eb5829edxczxczxc', "Wrong 'uid'");
+  client.assert(response.body.metadata.uid === 'D6EFAECD-2FCB-486D-B49A-4F699BFC24D1', "Wrong 'uid'");
   client.assert(response.body.metadata.tenant === 'axonic', "Wrong 'tenant'");
   client.assert(response.body.hasOwnProperty("error"), "Cannot find 'error' option in response");
   client.assert(response.body.error.code === 400, "Wrong 'error.code'");
