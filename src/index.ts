@@ -1,10 +1,12 @@
 import yargs from 'yargs'
 import {hideBin} from 'yargs/helpers'
 import {serve} from './server'
+import {version} from '../package.json';
 
 const argv = yargs(hideBin(process.argv))
   .scriptName('ketch-event-forwarder')
   .usage('$0 [--verbose] [--port number] --tls-cert file --tls-key file')
+  .version(version)
   .options({
     verbose: {
       type: 'boolean',
@@ -35,7 +37,7 @@ const argv = yargs(hideBin(process.argv))
   .parseSync()
 
 if (argv.verbose) {
-  console.info(`⚡️ Ketch Event Forwarder listening on port ${argv.port}`)
+  console.info(`⚡️ Ketch Event Forwarder ${version} listening on port ${argv.port}`)
 }
 
 serve(argv.port, argv.tlsCert, argv.tlsKey)
