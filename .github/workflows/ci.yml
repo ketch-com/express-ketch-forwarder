@@ -29,9 +29,10 @@ jobs:
     - name: Generate next version
       id: version
       uses: conventional-actions/next-version@v1
-    - uses: conventional-actions/write-version@v1
+    - name: Write version to package.json
+      uses: conventional-actions/write-version@v1
       with:
-        version: ${{steps.version.outputs.version}}
+        version: ${{ format('{0}.{1}.{2}', steps.version.outputs.version-major-only, steps.version.outputs.version-minor-only, steps.version.outputs.version-patch-only) }}
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
@@ -41,11 +42,13 @@ jobs:
       run: npm ci
     - name: Build
       run: npm run all
-    - uses: actions/upload-artifact@v3
+    - name: Upload docker artifact
+      uses: actions/upload-artifact@v3
       with:
         name: docker
         path: docker
-    - uses: actions/upload-artifact@v3
+    - name: Upload dist artifact
+      uses: actions/upload-artifact@v3
       with:
         name: dist
         path: dist/ketch-event-forwarder
@@ -65,7 +68,7 @@ jobs:
       with:
         name: docker
         path: docker
-    - name: Download docker artifact
+    - name: Download dist artifact
       uses: actions/download-artifact@v3
       with:
         name: dist
