@@ -55,7 +55,7 @@ jobs:
     name: Package ketch-event-forwarder
     needs: build
     runs-on: ubuntu-latest
-g    permissions:
+    permissions:
       contents: read
       packages: write
     steps:
