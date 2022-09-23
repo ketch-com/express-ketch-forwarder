@@ -29,6 +29,9 @@ jobs:
     - name: Generate next version
       id: version
       uses: conventional-actions/next-version@v1
+    - uses: conventional-actions/write-version@v1
+      with:
+        version: ${{steps.version.outputs.version}}
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
