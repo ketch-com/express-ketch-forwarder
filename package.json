@@ -24,7 +24,7 @@
     "all": "npm run build && npm run format && npm run lint && npm test"
   },
   "dependencies": {
-    "express": "^4.18.1",
+    "express": "^4.19.2",
     "express-basic-auth": "^1.2.1",
     "ts-node": "^10.9.1",
     "yargs": "^17.5.1",
