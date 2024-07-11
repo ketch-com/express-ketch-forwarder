@@ -41,12 +41,12 @@ jobs:
     - name: Build
       run: npm run all
     - name: Upload docker artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: docker
         path: docker
     - name: Upload dist artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dist
         path: dist/ketch-event-forwarder
