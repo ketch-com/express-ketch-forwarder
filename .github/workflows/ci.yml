@@ -60,12 +60,12 @@ jobs:
       packages: write
     steps:
     - name: Download docker artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4.1.7
       with:
         name: docker
         path: docker
     - name: Download dist artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4.1.7
       with:
         name: dist
         path: dist/ketch-event-forwarder
