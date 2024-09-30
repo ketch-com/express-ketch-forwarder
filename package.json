@@ -27,7 +27,7 @@
     "express": "^4.21.0",
     "express-basic-auth": "^1.2.1",
     "ts-node": "^10.9.1",
-    "yargs": "^17.5.1",
+    "yargs": "^17.7.2",
     "zod": "^3.22.3"
   },
   "devDependencies": {
